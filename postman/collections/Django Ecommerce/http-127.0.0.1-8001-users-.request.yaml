@@ -1,15 +1,15 @@
 $kind: http-request
 name: http://127.0.0.1:8001/users/
 description: ""
-url: http://127.0.0.1:8001/users/
+url: http://127.0.0.1:8000/users/
 method: POST
 body:
   type: json
   content: |-
     {
-        "first_name": "Alex",
-        "last_name": "Casey",
-        "email": "alex@example.com",
-        "password": "secret123"
-    }
+        "email": "test@gmail.com"
+        "password": "test1234"
+    }   
+auth:
+  type: bearer
 order: 1786942690729

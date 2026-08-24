@@ -28,9 +28,14 @@ class UserLoginSerializer(serializers.Serializer):
     password = serializers.CharField(write_only=True)
 
     def validate(self, data):
-        user = authenticate(username=data['email'], password=data['password'])
+        user = authenticate(
+            username=data['email'],
+            password=data['password']
+        )
         if user is None:
             raise serializers.ValidationError({'password': ''})
+
+        data['user'] = user
         return data
 
 
