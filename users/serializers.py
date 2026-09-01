@@ -1,4 +1,6 @@
 from rest_framework import serializers
+
+from cart.models import Cart
 from .models import User
 from django.contrib.auth import authenticate
 
@@ -21,6 +23,11 @@ class UserSerializer(serializers.ModelSerializer):
         user.set_password(validated_data['password'])
         user.save()
 
+        cart = Cart.objects.create(
+            user=user
+        )
+
+
         return user
 
 class UserLoginSerializer(serializers.Serializer):
@@ -37,6 +44,7 @@ class UserLoginSerializer(serializers.Serializer):
 
         data['user'] = user
         return data
+
 
 
 class UpdateUserSerializer(serializers.ModelSerializer):

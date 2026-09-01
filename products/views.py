@@ -12,6 +12,8 @@ class CreateProduct(generics.CreateAPIView):
     serializer_class = CreateProductSerializer
     permission_classes = [permissions.AllowAny] ##Temporary for testing purposes only
 
+##Returns a List of products in database
+##TESTING [0 FIELDS to be sent to the database, only data to be returned]
 class ProductList(generics.ListAPIView):
     queryset = Product.objects.all()
     serializer_class = ListProductSerializer
